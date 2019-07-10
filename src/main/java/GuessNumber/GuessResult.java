@@ -4,12 +4,12 @@ public class GuessResult {
     private int A=0;
     private int B=0;
 
-    GuessNumber guessNum= new GuessNumber();
-    int size = guessNum.getSize();
+    GuessNumber guessNumber= new GuessNumber();
+    int size = guessNumber.getSize();
 
     String numberInWithNoSpace;
 
-    public void getResult(String numberIn,String guessNumber){
+    public String getResult(String numberIn,String guessNumber){
         A=0;
         B=0;
         numberInWithNoSpace = Data.getNoSpaceString(numberIn);
@@ -27,8 +27,8 @@ public class GuessResult {
                 }
             }
         }
-        B= B - A;
-        System.out.println(A + "A" + B + "B");
+        B = B - A;
+        return A + "A" + B + "B";
     }
 
     public int getA()

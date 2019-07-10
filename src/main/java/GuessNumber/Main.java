@@ -16,10 +16,10 @@ public class Main {
 
         Scanner sc=new Scanner(System.in);
 
-        GuessResult gresult = new GuessResult();
-        GuessNumber gnumber= new GuessNumber();
+        GuessResult guessResult = new GuessResult();
+        GuessNumber guessNumber= new GuessNumber();
 
-        guessNum=gnumber.getNumber();
+        guessNum=guessNumber.getNumber();
         guessNumWithSpace=Data.getStringwithSpace(guessNum);
 
         for(i=0;i<count;i++)
@@ -37,8 +37,8 @@ public class Main {
                 continue;
             }
 
-            gresult.getResult(numberIn,guessNum);
-            if(gresult.getA()==gnumber.getSize()){
+            guessResult.getResult(numberIn,guessNum);
+            if(guessResult.getA()==guessNumber.getSize()){
                 System.out.println("Congratulations！You are right！");
             }
             else{

@@ -1,6 +1,7 @@
 package GuessNumber;
 
 public class Data {
+
     public static boolean containRepeatNum(String str)
     {
         if(str==null||str.isEmpty())
