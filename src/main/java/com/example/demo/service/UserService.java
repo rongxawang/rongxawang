@@ -1,21 +1,51 @@
 package com.example.demo.service;
 
 import com.example.demo.model.User;
+import com.example.demo.repository.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import java.util.List;
 
-public interface UserService {
+@Service
+public class UserService {
+    @Autowired
+    private UserRepository userRepository;
 
-     void addUser(User user);
-     void deleteUser(Integer id);
-     void updateUser(User user);
+    public void addUser(User user){
+        userRepository.save(user);
+    }
 
-     List<User>  users();
-//     void saveAll(List<User> users);
+    public void deleteUser(Integer id){
+        userRepository.deleteById(id);
+    }
+
+    public void updateUser(User user){
+        userRepository.save(user);
+    }
+
+    public List<User> users()
+    {
+        return userRepository.findAll();
+    }
+
+//    public void saveAll(List<User> users)
+//    {
+//        userRepository.saveAll(users);
+//    }
 //
-//     User getUserByUserName(String name) ;
+//    public User getUserByUserName(String name) {
+//        return userRepository.findByName(name);
+//    }
 
-     List<User> getUserByNameAndTel(String name,String tel);
+    public List<User> getUserByNameAndTel(String name,String tel)
+    {
+        return userRepository.findByNameAndTel(name,tel);
+    }
 
-     List<User> getUserByNameLike(String name);
+    public List<User> getUserByNameLike(String namelike)
+    {
+        return  userRepository.findByNameLike("%"+namelike+"%");
+    }
 
 }

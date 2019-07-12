@@ -1,39 +1,26 @@
 package GuessNumber;
 
 public class GuessResult {
-    private int A=0;
-    private int B=0;
 
-    GuessNumber guessNumber= new GuessNumber();
-    int size = guessNumber.getSize();
+    private static final int NUMBER_LENGTH = 4;
+    private int A = 0;
+    private int B = 0;
 
     String numberInWithNoSpace;
 
-    public String getResult(String numberIn,String guessNumber){
-        A=0;
-        B=0;
-        numberInWithNoSpace = Data.getNoSpaceString(numberIn);
+    public String getResult(String numberIn, String guessNumber) {
+        A = 0;
+        B = 0;
+        numberInWithNoSpace = DataChange.getNoSpaceString(numberIn);
 
-        for(int i= 0;i<size;i++){
-            if(numberInWithNoSpace.charAt(i)==guessNumber.charAt(i)){
+        for (int index = 0; index < NUMBER_LENGTH; index++) {
+            if (numberInWithNoSpace.charAt(index) == guessNumber.charAt(index)) {
                 A++;
+            } else if (numberInWithNoSpace.contains(guessNumber.substring(index, index + 1))) {
+                B++;
             }
         }
-        for(int j =0;j<size;j++){
-            for(int k = 0;k<size;k++){
-                if(numberInWithNoSpace.charAt(j)==guessNumber.charAt(k)){
-                    B++;
-                    break;
-                }
-            }
-        }
-        B = B - A;
         return A + "A" + B + "B";
-    }
-
-    public int getA()
-    {
-        return A;
     }
 }
 
