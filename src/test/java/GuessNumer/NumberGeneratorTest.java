@@ -9,7 +9,7 @@ import org.junit.Test;
 public class NumberGeneratorTest {
 
     private int SIZE;
-    NumberGenerator guessnumber = new NumberGenerator();
+    private NumberGenerator guessnumber = new NumberGenerator();
 
     @Before
     public void beforeMethod() {

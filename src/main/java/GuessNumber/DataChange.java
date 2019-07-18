@@ -15,19 +15,19 @@ public class DataChange {
         return false;
     }
 
-//    public static String[] getNoSpaceStringA(String str) {
-//        if (str == null || str.isEmpty()) {
-//            return null;
-//        }
-//        String[] strings = str.split(" ");
-//        return strings;
-//    }
+    public static String[] getStringArray(String str) {
+        if (str.isEmpty()) {
+            return null;
+        }
+        return str.split(" ");
+    }
 
-//    public static String[] changeStrToStrArray(String str) {
-//
-//        String[] strings = str.split("");
-//        return strings;
-//    }
+    public static String[] changeStrToStrArray(String str) {
+
+        char[] charArray = str.toCharArray();
+        String strings = charArray.toString();
+        return getStringArray(strings);
+    }
 
     public static String getNoSpaceString(String str) {
         return str.replace(" ", "");

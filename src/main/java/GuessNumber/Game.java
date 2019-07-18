@@ -1,44 +1,44 @@
 package GuessNumber;
 
-public class Game {
+class Game {
     private static final String WIN_CODE = "4A0B";
-    private NumberReader numberReader;
-    private GuessResult guessResult;
-    private NumberGenerator numberGenerator;
-    private Printer printer;
-
     private int remainingGuessCount = 6;
 
-    public Game(NumberGenerator numberGenerator, GuessResult guessResult, Printer printer, NumberReader numberReader) {
-        this.numberReader = numberReader;
-        this.printer = printer;
-        this.numberGenerator = numberGenerator;
-        this.guessResult = guessResult;
-    }
+    private NumberGenerator numberGenerator = new NumberGenerator();
+    private GuessResult guessResult = new GuessResult();
+    private NumberReader numberReader = new NumberReader();
 
-    public void start() {
+    void start() {
         String guessNumber = numberGenerator.getNumber();
         while (remainingGuessCount > 0) {
+            printMessage();
+            String result;
             try {
-                if (remainingGuessCount == 1) {
-                    printer.print("Guess number game,you only have" + remainingGuessCount + "chance" + "Please input four numbers:");
-                }
-                if (remainingGuessCount != 1) {
-                    printer.print("Guess number game,you have" + " " + remainingGuessCount + " " + "chances." + "Please input four numbers:");
-                }
-                String result = guessResult.getResult(numberReader.read(), guessNumber);
-
-                if (WIN_CODE.equals(result)) {
-                    printer.print("you win");
-                    return;
-                }
-                printer.print(result);
-                remainingGuessCount--;
+                result = guessResult.getResult(numberReader.read(), guessNumber);
             } catch (Exception e) {
-                printer.print(e.getMessage());
+                System.out.println(e.getMessage());
+                return;
             }
+            OutputWin(result);
+            System.out.println(result);
+            remainingGuessCount--;
         }
-        printer.print("Game Over,The number string is:" + guessNumber);
+        System.out.println("Game Over,The number string is:" + DataChange.getStringwithSpace(guessNumber));
+    }
 
+    private void printMessage() {
+        if (remainingGuessCount == 1) {
+            System.out.println("Guess number game,you only have" + remainingGuessCount + "chance" + "Please input four numbers:");
+        }
+        if (remainingGuessCount != 1) {
+            System.out.println("Guess number game,you have" + " " + remainingGuessCount + " " + "chances." + "Please input four numbers:");
+        }
+    }
+
+    private void OutputWin(String result) {
+        if (WIN_CODE.equals(result)) {
+            System.out.println("you win");
+        }
     }
 }
+
