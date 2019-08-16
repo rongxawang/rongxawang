@@ -13,10 +13,7 @@ public class User {
     private Integer id;
     private String name;
     private int age;
-    private enum sex
-    {
-        FM,MALE
-    }
+    private String sex;
     private String tel;
 }
 

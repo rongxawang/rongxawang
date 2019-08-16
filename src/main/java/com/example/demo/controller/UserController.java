@@ -13,28 +13,16 @@ import java.util.List;
 public class UserController {
     @Autowired
     private UserService userService;
-//
-//    @PostMapping("/save")
-//    public String save()
-//    {
-//        User user1=new User(1,"john",12,"male","13838388294");
-//        User user2=new User(2,"lily",13,"fm","13832848821");
-//        User user3=new User(3,"nana",18,"fm","18717396890");
-//        List<User> users = new ArrayList<>();
-//        users.add(user1);
-//        users.add(user2);
-//        users.add(user3);
-//        userService.saveAll(users);
-//        return "保存成功";
-//    }
 
     @GetMapping()
+    @CrossOrigin(origins = "*")
     public List<User> usersList() {
         return userService.users();
     }
 
     //增加一个用户
     @PostMapping()
+    @CrossOrigin(origins = "*")
     public User addUser(@RequestBody User user) {
         userService.addUser(user);
         return user;
@@ -42,6 +30,7 @@ public class UserController {
 
     //删除一个用户
     @DeleteMapping("/{id}")
+    @CrossOrigin(origins = "*")
     public void deleteUser(@PathVariable("id") Integer id) {
         userService.deleteUser(id);
 
@@ -49,24 +38,22 @@ public class UserController {
 
     //改
     @PutMapping()
-    public String updateUser(@RequestBody User user) {
+    @CrossOrigin(origins = "*")
+    public User updateUser(@RequestBody User user) {
         userService.updateUser(user);
-        return "保存成功";
+        return user;
     }
 
-//    根据名字查找
-//    @GetMapping("/{name}")
-//    public User getUserByName(@PathVariable("name") String name) {
-//        return userService.getUserByUserName(name);
-//    }
 
     @GetMapping("/{name}/{tel}")
+    @CrossOrigin(origins = "*")
     public List<User> getUserByNameAndTel(@PathVariable("name") String name,
                                           @RequestParam("tel") String tel) {
         return userService.getUserByNameAndTel(name, tel);
     }
 
     @GetMapping("/{name}")
+    @CrossOrigin(origins = "*")
     public List<User> getUserByNameLike(@PathVariable("name") String name) {
         return userService.getUserByNameLike(name);
     }

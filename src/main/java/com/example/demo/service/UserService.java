@@ -29,15 +29,6 @@ public class UserService {
         return userRepository.findAll();
     }
 
-//    public void saveAll(List<User> users)
-//    {
-//        userRepository.saveAll(users);
-//    }
-//
-//    public User getUserByUserName(String name) {
-//        return userRepository.findByName(name);
-//    }
-
     public List<User> getUserByNameAndTel(String name,String tel)
     {
         return userRepository.findByNameAndTel(name,tel);
